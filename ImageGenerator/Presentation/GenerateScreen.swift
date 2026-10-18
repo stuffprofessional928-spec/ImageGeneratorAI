@@ -179,14 +179,17 @@ struct GenerateScreen: View {
             TextField("Describe the image you want to create", text: $viewModel.prompt, axis: .vertical)
                 .font(.system(size: 15))
                 .foregroundStyle(StudioPalette.ink)
-                .lineLimit(3...5)
+                .lineLimit(4...12)
                 .focused($isPromptFocused)
                 .disabled(isGenerating)
                 .accessibilityLabel("Image prompt")
+                .accessibilityIdentifier("image-prompt-field")
         }
         .padding(16)
-        .frame(maxWidth: .infinity, minHeight: 104, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: 154, alignment: .topLeading)
         .background(StudioPalette.pink, in: RoundedRectangle(cornerRadius: 20))
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("prompt-card")
     }
 
     private var referencePicker: some View {

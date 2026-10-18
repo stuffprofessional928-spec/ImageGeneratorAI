@@ -1,6 +1,22 @@
 import XCTest
 
 final class GenerateScreenUITests: XCTestCase {
+    func testPromptAreaGrowsWithEnteredText() {
+        let app = XCUIApplication()
+        app.launch()
+
+        let promptCard = app.otherElements["prompt-card"]
+        XCTAssertTrue(promptCard.waitForExistence(timeout: 5))
+        let collapsedHeight = promptCard.frame.height
+
+        let promptField = app.descendants(matching: .any)["image-prompt-field"]
+        XCTAssertTrue(promptField.waitForExistence(timeout: 5))
+        promptField.tap()
+        promptField.typeText(String(repeating: "\nA new line of prompt text.", count: 8))
+
+        XCTAssertGreaterThan(promptCard.frame.height, collapsedHeight)
+    }
+
     func testDimensionsCanBeSelected() {
         let app = XCUIApplication()
         app.launch()
