@@ -17,8 +17,7 @@ struct GenerateImageUseCase {
         resolution: ImageResolution,
         aspectRatio: ImageAspectRatio,
         quality: ImageQuality,
-        format: ImageFormat,
-        referenceImageData: Data?
+        format: ImageFormat
     ) async throws -> GeneratedImage {
         let trimmedPrompt = prompt.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedPrompt.isEmpty else {
@@ -35,7 +34,7 @@ struct GenerateImageUseCase {
             height: dimensions.height,
             quality: quality,
             format: format,
-            referenceImageBase64: referenceImageData?.base64EncodedString()
+            image: ""
         )
         return try await client.generate(request)
     }

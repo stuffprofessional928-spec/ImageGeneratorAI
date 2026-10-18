@@ -32,7 +32,7 @@ final class GenerateScreenUITests: XCTestCase {
         XCTAssertTrue(dimensionsButton.label.contains("1024 × 576"))
     }
 
-    func testGenerateAndSaveMockImage() {
+    func testGenerateAndSaveImage() {
         let app = XCUIApplication()
         app.launch()
 

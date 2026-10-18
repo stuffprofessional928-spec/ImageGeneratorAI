@@ -148,7 +148,7 @@ struct GenerateScreen: View {
         } label: {
             HStack(spacing: 9) {
                 Circle().fill(StudioPalette.accent).frame(width: 8, height: 8)
-                Text(viewModel.model.rawValue)
+                Text(viewModel.model.displayName)
                     .font(.system(size: 14, weight: .semibold))
                 Image(systemName: "chevron.down")
                     .font(.system(size: 11, weight: .semibold))
@@ -160,7 +160,7 @@ struct GenerateScreen: View {
         }
         .buttonStyle(.plain)
         .disabled(isGenerating)
-        .accessibilityLabel("Model, \(viewModel.model.rawValue)")
+        .accessibilityLabel("Model, \(viewModel.model.displayName)")
     }
 
     private var promptCard: some View {
@@ -571,7 +571,7 @@ private struct ModelSelectionSheet: View {
                     dismiss()
                 } label: {
                     HStack {
-                        Text(model.rawValue)
+                        Text(model.displayName)
                             .font(.system(size: 16, weight: .semibold))
                         Spacer()
                         if selection == model {
@@ -613,7 +613,7 @@ private struct ImageStage: View {
                     Text("Composing the still")
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundStyle(StudioPalette.ink)
-                    Text("\(viewModel.model.rawValue) · \(viewModel.aspectRatio.rawValue) · \(viewModel.format.rawValue)")
+                    Text("\(viewModel.model.displayName) · \(viewModel.aspectRatio.rawValue) · \(viewModel.format.rawValue)")
                         .font(.system(size: 12))
                         .foregroundStyle(StudioPalette.muted)
                 } else if let image = viewModel.generatedImage, let uiImage = UIImage(data: image.data) {

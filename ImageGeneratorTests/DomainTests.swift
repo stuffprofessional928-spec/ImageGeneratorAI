@@ -33,41 +33,47 @@ import Testing
 @Test func requestEncodingOmitsMissingReferenceAndKeepsContractKeys() throws {
     let request = GenerateRequest(
         prompt: "Courtyard",
-        model: .gpt4o,
+        model: .qwenImage,
         resolution: .oneK,
         aspectRatio: .square,
         width: 1024,
         height: 1024,
         quality: .standard,
         format: .png,
-        referenceImageBase64: nil
+        image: ""
     )
     let data = try JSONEncoder().encode(request)
     let json = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
 
-    #expect(json["aspectRatio"] as? String == "1:1")
-    #expect(json["format"] as? String == "PNG")
-    #expect(json["width"] as? Int == 1024)
-    #expect(json["referenceImageBase64"] == nil)
+    #expect(Set(json.keys) == ["prompt", "model", "resolution", "aspect_ratio", "dimensions", "image", "quality", "output"])
+    #expect(json["aspect_ratio"] as? String == "1:1")
+    #expect(json["dimensions"] as? String == "1024x1024")
+    #expect(json["image"] as? String == "")
+    #expect(json["model"] as? String == "qwen/qwen-image-2.1-turbo")
+    #expect(json["quality"] as? String == "standard")
+    #expect(json["output"] as? String == "png")
 }
 
-@Test func requestEncodingIncludesReferenceWhenPresent() throws {
+@Test func requestEncodingUsesFluxModelIdentifier() throws {
     let request = GenerateRequest(
         prompt: "Courtyard",
-        model: .claude,
+        model: .fluxImage,
         resolution: .twoK,
         aspectRatio: .tall,
         width: 1152,
         height: 2048,
         quality: .high,
         format: .jpeg,
-        referenceImageBase64: Data([1, 2, 3]).base64EncodedString()
+        image: ""
     )
     let data = try JSONEncoder().encode(request)
     let json = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
 
-    #expect(json["referenceImageBase64"] as? String == "AQID")
-    #expect(json["model"] as? String == "Claude")
+    #expect(json["image"] as? String == "")
+    #expect(json["dimensions"] as? String == "1152x2048")
+    #expect(json["model"] as? String == "black-forest-labs/flux-3-image-klein")
+    #expect(json["quality"] as? String == "high")
+    #expect(json["output"] as? String == "jpeg")
 }
 
 @Test func emptyAndWhitespacePromptsAreRejectedBeforeCallingClient() async {
@@ -78,12 +84,11 @@ import Testing
         do {
             _ = try await useCase.execute(
                 prompt: prompt,
-                model: .gpt4o,
+                model: .qwenImage,
                 resolution: .oneK,
                 aspectRatio: .square,
                 quality: .standard,
-                format: .png,
-                referenceImageData: nil
+                format: .png
             )
             Issue.record("Expected an empty prompt to be rejected.")
         } catch let error as GenerateImageError {

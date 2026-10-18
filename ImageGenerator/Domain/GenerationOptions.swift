@@ -1,12 +1,17 @@
 import Foundation
 
 enum GenerationModel: String, CaseIterable, Identifiable, Codable {
-    case gpt4o = "GPT-4o"
-    case claude = "Claude"
-    case gemini = "Gemini"
-    case llama = "Llama"
+    case qwenImage = "qwen/qwen-image-2.1-turbo"
+    case fluxImage = "black-forest-labs/flux-3-image-klein"
 
     var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .qwenImage: "Qwen Image 2.1 Turbo"
+        case .fluxImage: "FLUX.3 Image Klein"
+        }
+    }
 }
 
 enum ImageResolution: String, CaseIterable, Identifiable, Codable {

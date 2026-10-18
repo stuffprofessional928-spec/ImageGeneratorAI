@@ -8,14 +8,20 @@ import Testing
 
     #expect(viewModel.phase == .idle)
     #expect(viewModel.prompt == "A sunlit terracotta courtyard with olive trees, warm amber light, film still")
-    #expect(viewModel.model == .gpt4o)
+    #expect(viewModel.model == .qwenImage)
     #expect(viewModel.dimensions == ImageDimensions(width: 1024, height: 1024))
     let callCount = await client.callCount
     #expect(callCount == 0)
 }
 
 @Test @MainActor func successfulGenerationReachesResultWithImage() async {
-    let image = GeneratedImage(data: Data([1, 2, 3]), format: .png, width: 1024, height: 1024, model: "GPT-4o")
+    let image = GeneratedImage(
+        data: Data([1, 2, 3]),
+        format: .png,
+        width: 1024,
+        height: 1024,
+        model: GenerationModel.qwenImage.rawValue
+    )
     let client = StubImageAPIClient(image: image)
     let viewModel = makeViewModel(client: client)
 
@@ -89,7 +95,13 @@ private actor StubImageAPIClient: ImageAPIClient {
     private let delay: Duration
 
     init(
-        image: GeneratedImage = GeneratedImage(data: Data([1]), format: .png, width: 1024, height: 1024, model: "GPT-4o"),
+        image: GeneratedImage = GeneratedImage(
+            data: Data([1]),
+            format: .png,
+            width: 1024,
+            height: 1024,
+            model: GenerationModel.qwenImage.rawValue
+        ),
         failure: GenerateImageError? = nil,
         delay: Duration = .zero
     ) {

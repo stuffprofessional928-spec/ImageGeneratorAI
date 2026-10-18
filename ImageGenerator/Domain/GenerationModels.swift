@@ -16,7 +16,30 @@ struct GenerateRequest: Encodable, Equatable {
     let height: Int
     let quality: ImageQuality
     let format: ImageFormat
-    let referenceImageBase64: String?
+    let image: String
+
+    private enum CodingKeys: String, CodingKey {
+        case prompt
+        case model
+        case resolution
+        case aspectRatio = "aspect_ratio"
+        case dimensions
+        case image
+        case quality
+        case format = "output"
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(prompt, forKey: .prompt)
+        try container.encode(model.rawValue, forKey: .model)
+        try container.encode(resolution.rawValue, forKey: .resolution)
+        try container.encode(aspectRatio.rawValue, forKey: .aspectRatio)
+        try container.encode("\(width)x\(height)", forKey: .dimensions)
+        try container.encode(image, forKey: .image)
+        try container.encode(quality.rawValue.lowercased(), forKey: .quality)
+        try container.encode(format.rawValue.lowercased(), forKey: .format)
+    }
 }
 
 struct GeneratedImage: Equatable {

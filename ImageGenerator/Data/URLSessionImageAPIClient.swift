@@ -4,7 +4,7 @@ final class URLSessionImageAPIClient: ImageAPIClient, @unchecked Sendable {
     private let baseURL: URL
     private let session: URLSession
 
-    init(baseURL: URL = URL(string: "http://127.0.0.1:8787")!, session: URLSession = .shared) {
+    init(baseURL: URL = URL(string: "https://chatai-5w9x.onrender.com/")!, session: URLSession = .shared) {
         self.baseURL = baseURL
         self.session = session
     }
@@ -27,28 +27,47 @@ final class URLSessionImageAPIClient: ImageAPIClient, @unchecked Sendable {
         }
 
         let payload = try decoder.decode(GeneratedImagePayload.self, from: data)
-        guard let imageData = Data(base64Encoded: payload.imageBase64) else {
+        guard let result = payload.data.first,
+              let imageData = Data(base64Encoded: result.b64JSON),
+              let mediaType = ImageFormat(mediaType: result.mediaType) else {
             throw GenerateImageError.invalidResponse
         }
 
         return GeneratedImage(
             data: imageData,
-            format: ImageFormat(rawValue: payload.format) ?? requestBody.format,
-            width: payload.width,
-            height: payload.height,
-            model: payload.model
+            format: mediaType,
+            width: requestBody.width,
+            height: requestBody.height,
+            model: requestBody.model.rawValue
         )
     }
 }
 
 private struct GeneratedImagePayload: Decodable {
-    let imageBase64: String
-    let format: String
-    let width: Int
-    let height: Int
-    let model: String
+    let data: [ImageData]
+
+    struct ImageData: Decodable {
+        let b64JSON: String
+        let mediaType: String
+
+        private enum CodingKeys: String, CodingKey {
+            case b64JSON = "b64_json"
+            case mediaType = "media_type"
+        }
+    }
 }
 
 private struct ServerError: Decodable {
     let error: String
+}
+
+private extension ImageFormat {
+    init?(mediaType: String) {
+        switch mediaType.lowercased() {
+        case "image/png": self = .png
+        case "image/jpeg", "image/jpg": self = .jpeg
+        case "image/webp": self = .webp
+        default: return nil
+        }
+    }
 }

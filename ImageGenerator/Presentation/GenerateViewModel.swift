@@ -20,7 +20,7 @@ final class GenerateViewModel: ObservableObject {
             }
         }
     }
-    @Published var model = GenerationModel.gpt4o
+    @Published var model = GenerationModel.qwenImage
     @Published var resolution = ImageResolution.oneK
     @Published var aspectRatio = ImageAspectRatio.square
     @Published var quality = ImageQuality.standard
@@ -97,8 +97,7 @@ final class GenerateViewModel: ObservableObject {
                 resolution: resolution,
                 aspectRatio: aspectRatio,
                 quality: quality,
-                format: format,
-                referenceImageData: referenceImageData
+                format: format
             )
             withAnimation(.easeInOut(duration: 0.45)) {
                 generatedImage = image

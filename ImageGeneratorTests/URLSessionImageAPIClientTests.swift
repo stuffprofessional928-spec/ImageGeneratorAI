@@ -7,33 +7,33 @@ import Testing
     configuration.protocolClasses = [StubURLProtocol.self]
     let session = URLSession(configuration: configuration)
     let client = URLSessionImageAPIClient(
-        baseURL: URL(string: "https://mock.image.test")!,
+        baseURL: URL(string: "https://api.test")!,
         session: session
     )
     let request = GenerateRequest(
         prompt: "Courtyard",
-        model: .gpt4o,
+        model: .qwenImage,
         resolution: .oneK,
         aspectRatio: .square,
         width: 1024,
         height: 1024,
         quality: .standard,
         format: .png,
-        referenceImageBase64: nil
+        image: ""
     )
 
     let image = try await client.generate(request)
 
-    #expect(image.data == Data([137, 80, 78, 71, 13, 10, 26, 10]))
-    #expect(image.format == .png)
+    #expect(image.data == Data([255, 216, 255, 217]))
+    #expect(image.format == .jpeg)
     #expect(image.width == 1024)
     #expect(image.height == 1024)
-    #expect(image.model == "GPT-4o")
+    #expect(image.model == "qwen/qwen-image-2.1-turbo")
 }
 
 private final class StubURLProtocol: URLProtocol {
     private static let responseBody = Data(
-        #"{"imageBase64":"iVBORw0KGgo=","format":"PNG","width":1024,"height":1024,"model":"GPT-4o"}"#.utf8
+        #"{"created":0,"data":[{"b64_json":"/9j/2Q==","media_type":"image/jpeg"}],"usage":{"total_tokens":0}}"#.utf8
     )
 
     override class func canInit(with request: URLRequest) -> Bool { true }
