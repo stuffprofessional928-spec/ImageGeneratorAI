@@ -1,12 +1,22 @@
 import Foundation
 
 final class URLSessionImageAPIClient: ImageAPIClient, @unchecked Sendable {
+    private static let requestTimeout: TimeInterval = 45
+    private static let resourceTimeout: TimeInterval = 300
+
     private let baseURL: URL
     private let session: URLSession
 
-    init(baseURL: URL = URL(string: "https://chatai-5w9x.onrender.com/")!, session: URLSession = .shared) {
+    init(baseURL: URL = URL(string: "https://chatai-5w9x.onrender.com/")!, session: URLSession? = nil) {
         self.baseURL = baseURL
-        self.session = session
+        if let session {
+            self.session = session
+        } else {
+            let configuration = URLSessionConfiguration.default
+            configuration.timeoutIntervalForRequest = Self.requestTimeout
+            configuration.timeoutIntervalForResource = Self.resourceTimeout
+            self.session = URLSession(configuration: configuration)
+        }
     }
 
     func generate(_ requestBody: GenerateRequest) async throws -> GeneratedImage {
