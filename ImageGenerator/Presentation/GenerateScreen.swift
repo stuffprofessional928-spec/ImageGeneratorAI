@@ -355,18 +355,20 @@ struct GenerateScreen: View {
             .font(.system(size: 15, weight: .semibold))
 
             if case .failed(let message) = viewModel.phase {
-                HStack {
+                VStack(alignment: .leading, spacing: 6) {
                     Text(message)
                         .font(.system(size: 13))
                         .foregroundStyle(StudioPalette.terracotta)
-                        .lineLimit(2)
-                    Spacer()
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     Button("Try again") {
                         Task { await viewModel.generate() }
                     }
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(StudioPalette.terracotta)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                 }
+                .frame(maxWidth: .infinity)
             }
 
             if let status = viewModel.statusMessage {
