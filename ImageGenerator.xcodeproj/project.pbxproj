@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 71;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		100000000000000000000001 /* ImageGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000001 /* ImageGeneratorApp.swift */; };
+		100000000000000000000002 /* GenerationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000002 /* GenerationOptions.swift */; };
+		100000000000000000000003 /* GenerationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000003 /* GenerationModels.swift */; };
+		100000000000000000000004 /* DimensionResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000004 /* DimensionResolver.swift */; };
+		100000000000000000000005 /* GenerateImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000005 /* GenerateImageUseCase.swift */; };
+		100000000000000000000006 /* URLSessionImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000006 /* URLSessionImageAPIClient.swift */; };
+		100000000000000000000007 /* PhotoLibraryImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000007 /* PhotoLibraryImageSaver.swift */; };
+		100000000000000000000008 /* ReferenceImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000008 /* ReferenceImageProcessor.swift */; };
+		100000000000000000000009 /* GenerateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000009 /* GenerateViewModel.swift */; };
+		10000000000000000000000A /* GenerateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000A /* GenerateScreen.swift */; };
+		10000000000000000000000B /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000B /* DomainTests.swift */; };
+		10000000000000000000000C /* GenerateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000C /* GenerateViewModelTests.swift */; };
+		A20000000000000000000001 /* URLSessionImageAPIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30000000000000000000001 /* URLSessionImageAPIClientTests.swift */; };
+		B10000000000000000000001 /* GenerateScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20000000000000000000001 /* GenerateScreenUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		800000000000000000000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 900000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 500000000000000000000001;
+			remoteInfo = ImageGenerator;
+		};
+		B80000000000000000000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 900000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 500000000000000000000001;
+			remoteInfo = ImageGenerator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		200000000000000000000001 /* ImageGeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGeneratorApp.swift; sourceTree = "<group>"; };
+		200000000000000000000002 /* GenerationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationOptions.swift; sourceTree = "<group>"; };
+		200000000000000000000003 /* GenerationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationModels.swift; sourceTree = "<group>"; };
+		200000000000000000000004 /* DimensionResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionResolver.swift; sourceTree = "<group>"; };
+		200000000000000000000005 /* GenerateImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateImageUseCase.swift; sourceTree = "<group>"; };
+		200000000000000000000006 /* URLSessionImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionImageAPIClient.swift; sourceTree = "<group>"; };
+		200000000000000000000007 /* PhotoLibraryImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryImageSaver.swift; sourceTree = "<group>"; };
+		200000000000000000000008 /* ReferenceImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceImageProcessor.swift; sourceTree = "<group>"; };
+		200000000000000000000009 /* GenerateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateViewModel.swift; sourceTree = "<group>"; };
+		20000000000000000000000A /* GenerateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScreen.swift; sourceTree = "<group>"; };
+		20000000000000000000000B /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		20000000000000000000000C /* GenerateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateViewModelTests.swift; sourceTree = "<group>"; };
+		20000000000000000000000D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20000000000000000000000E /* ImageGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20000000000000000000000F /* ImageGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30000000000000000000001 /* URLSessionImageAPIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionImageAPIClientTests.swift; sourceTree = "<group>"; };
+		B20000000000000000000001 /* GenerateScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScreenUITests.swift; sourceTree = "<group>"; };
+		B30000000000000000000001 /* ImageGeneratorUITests-Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "ImageGeneratorUITests-Runner.app"; path = ImageGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		300000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		300000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B40000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		400000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				400000000000000000000002 /* ImageGenerator */,
+				400000000000000000000003 /* ImageGeneratorTests */,
+				400000000000000000000004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		400000000000000000000002 /* ImageGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				400000000000000000000005 /* App */,
+				400000000000000000000006 /* Domain */,
+				400000000000000000000007 /* Data */,
+				400000000000000000000008 /* Presentation */,
+			);
+			path = ImageGenerator;
+			sourceTree = "<group>";
+		};
+		400000000000000000000003 /* ImageGeneratorTests */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000000B /* DomainTests.swift */,
+				20000000000000000000000C /* GenerateViewModelTests.swift */,
+				A30000000000000000000001 /* URLSessionImageAPIClientTests.swift */,
+				B20000000000000000000001 /* GenerateScreenUITests.swift */,
+			);
+			path = ImageGeneratorTests;
+			sourceTree = "<group>";
+		};
+		400000000000000000000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20000000000000000000000E /* ImageGenerator.app */,
+				20000000000000000000000F /* ImageGeneratorTests.xctest */,
+				B30000000000000000000001 /* ImageGeneratorUITests-Runner.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		400000000000000000000005 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000001 /* ImageGeneratorApp.swift */,
+				20000000000000000000000D /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		400000000000000000000006 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000002 /* GenerationOptions.swift */,
+				200000000000000000000003 /* GenerationModels.swift */,
+				200000000000000000000004 /* DimensionResolver.swift */,
+				200000000000000000000005 /* GenerateImageUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		400000000000000000000007 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000006 /* URLSessionImageAPIClient.swift */,
+				200000000000000000000007 /* PhotoLibraryImageSaver.swift */,
+				200000000000000000000008 /* ReferenceImageProcessor.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		400000000000000000000008 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000009 /* GenerateViewModel.swift */,
+				20000000000000000000000A /* GenerateScreen.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		500000000000000000000001 /* ImageGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000001 /* Build configuration list for PBXNativeTarget "ImageGenerator" */;
+			buildPhases = (
+				700000000000000000000001 /* Sources */,
+				300000000000000000000001 /* Frameworks */,
+				700000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImageGenerator;
+			productName = ImageGenerator;
+			productReference = 20000000000000000000000E /* ImageGenerator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		500000000000000000000002 /* ImageGeneratorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600000000000000000000002 /* Build configuration list for PBXNativeTarget "ImageGeneratorTests" */;
+			buildPhases = (
+				700000000000000000000002 /* Sources */,
+				300000000000000000000002 /* Frameworks */,
+				700000000000000000000004 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				800000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = ImageGeneratorTests;
+			productName = ImageGeneratorTests;
+			productReference = 20000000000000000000000F /* ImageGeneratorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B50000000000000000000001 /* ImageGeneratorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B90000000000000000000001 /* Build configuration list for PBXNativeTarget "ImageGeneratorUITests" */;
+			buildPhases = (
+				B60000000000000000000001 /* Sources */,
+				B40000000000000000000001 /* Frameworks */,
+				B70000000000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B80000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = ImageGeneratorUITests;
+			productName = ImageGeneratorUITests;
+			productReference = B30000000000000000000001 /* ImageGeneratorUITests-Runner.app */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		900000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					500000000000000000000001 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					500000000000000000000002 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					B50000000000000000000001 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+				};
+			};
+			buildConfigurationList = 600000000000000000000003 /* Build configuration list for PBXProject "ImageGenerator" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 400000000000000000000001;
+			productRefGroup = 400000000000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				500000000000000000000001 /* ImageGenerator */,
+				500000000000000000000002 /* ImageGeneratorTests */,
+				B50000000000000000000001 /* ImageGeneratorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		700000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		700000000000000000000004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B70000000000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		700000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000001 /* ImageGeneratorApp.swift in Sources */,
+				100000000000000000000002 /* GenerationOptions.swift in Sources */,
+				100000000000000000000003 /* GenerationModels.swift in Sources */,
+				100000000000000000000004 /* DimensionResolver.swift in Sources */,
+				100000000000000000000005 /* GenerateImageUseCase.swift in Sources */,
+				100000000000000000000006 /* URLSessionImageAPIClient.swift in Sources */,
+				100000000000000000000007 /* PhotoLibraryImageSaver.swift in Sources */,
+				100000000000000000000008 /* ReferenceImageProcessor.swift in Sources */,
+				100000000000000000000009 /* GenerateViewModel.swift in Sources */,
+				10000000000000000000000A /* GenerateScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		700000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000000000000000000000B /* DomainTests.swift in Sources */,
+				10000000000000000000000C /* GenerateViewModelTests.swift in Sources */,
+				A20000000000000000000001 /* URLSessionImageAPIClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B60000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000001 /* GenerateScreenUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		800000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 500000000000000000000001 /* ImageGenerator */;
+			targetProxy = 800000000000000000000002 /* PBXContainerItemProxy */;
+		};
+		B80000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 500000000000000000000001 /* ImageGenerator */;
+			targetProxy = B80000000000000000000002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A00000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LF27STVX4V;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ImageGenerator/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.imagegenerator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A00000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LF27STVX4V;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ImageGenerator/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.imagegenerator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A00000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.imagegenerator.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageGenerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ImageGenerator";
+				TEST_TARGET_NAME = ImageGenerator;
+			};
+			name = Debug;
+		};
+		A00000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.imagegenerator.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageGenerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ImageGenerator";
+				TEST_TARGET_NAME = ImageGenerator;
+			};
+			name = Release;
+		};
+		A00000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ENABLE_TESTABILITY = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A00000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C10000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.imagegenerator.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ImageGenerator;
+			};
+			name = Debug;
+		};
+		C10000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.local.imagegenerator.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ImageGenerator;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		600000000000000000000001 /* Build configuration list for PBXNativeTarget "ImageGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000000001 /* Debug */,
+				A00000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		600000000000000000000002 /* Build configuration list for PBXNativeTarget "ImageGeneratorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000000003 /* Debug */,
+				A00000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		600000000000000000000003 /* Build configuration list for PBXProject "ImageGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A00000000000000000000005 /* Debug */,
+				A00000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B90000000000000000000001 /* Build configuration list for PBXNativeTarget "ImageGeneratorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10000000000000000000001 /* Debug */,
+				C10000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 900000000000000000000001 /* Project object */;
+}
