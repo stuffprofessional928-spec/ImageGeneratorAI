@@ -10,7 +10,7 @@ final class URLSessionImageAPIClient: ImageAPIClient, @unchecked Sendable {
     }
 
     func generate(_ requestBody: GenerateRequest) async throws -> GeneratedImage {
-        var request = URLRequest(url: baseURL.appending(path: "/v1/generate"))
+        var request = URLRequest(url: baseURL.appending(path: "chatAI/v1/image"))
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(requestBody)

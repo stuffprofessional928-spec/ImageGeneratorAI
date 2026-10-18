@@ -16,7 +16,9 @@ enum GenerationModel: String, CaseIterable, Identifiable, Codable {
 
 enum ImageResolution: String, CaseIterable, Identifiable, Codable {
     case oneK = "1K"
+    case oneFiveK = "1.5K"
     case twoK = "2K"
+    case fourK = "4K"
 
     var id: String { rawValue }
 
@@ -24,6 +26,8 @@ enum ImageResolution: String, CaseIterable, Identifiable, Codable {
         switch self {
         case .oneK: 1024
         case .twoK: 2048
+        case .oneFiveK: 1536
+        case .fourK: 4096
         }
     }
 }
