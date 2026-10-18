@@ -33,6 +33,20 @@ import Testing
     #expect(callCount == 1)
 }
 
+@Test @MainActor func generationCanBeStartedAgainAfterSuccess() async {
+    let client = StubImageAPIClient()
+    let viewModel = makeViewModel(client: client)
+
+    await viewModel.generate()
+    #expect(viewModel.canGenerate)
+
+    await viewModel.generate()
+
+    let callCount = await client.callCount
+    #expect(callCount == 2)
+    #expect(viewModel.phase == .result)
+}
+
 @Test @MainActor func failureKeepsPromptAndReportsError() async {
     let client = StubImageAPIClient(failure: GenerateImageError.server("Studio is unavailable."))
     let viewModel = makeViewModel(client: client)

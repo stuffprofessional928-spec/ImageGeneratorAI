@@ -12,6 +12,14 @@ private enum StudioPalette {
     static let line = Color(hex: 0xE7E0D6)
 }
 
+private struct PromptFieldFramePreferenceKey: PreferenceKey {
+    static let defaultValue = CGRect.zero
+
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
 private enum OptionSheet: String, Identifiable {
     case resolution
     case aspectRatio
@@ -38,6 +46,7 @@ struct GenerateScreen: View {
     @State private var isPreviewPresented = false
     @State private var activeOption: OptionSheet?
     @State private var selectedPhoto: PhotosPickerItem?
+    @State private var promptFieldFrame: CGRect = .zero
     @FocusState private var isPromptFocused: Bool
 
     init(viewModel: GenerateViewModel) {
@@ -85,6 +94,14 @@ struct GenerateScreen: View {
                     }
             }
         }
+        .coordinateSpace(name: "generate-screen")
+        .onPreferenceChange(PromptFieldFramePreferenceKey.self) { promptFieldFrame = $0 }
+        .simultaneousGesture(
+            SpatialTapGesture().onEnded { tap in
+                guard isPromptFocused, !promptFieldFrame.contains(tap.location) else { return }
+                isPromptFocused = false
+            }
+        )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(StudioPalette.background.ignoresSafeArea())
         .preferredColorScheme(.light)
@@ -144,6 +161,7 @@ struct GenerateScreen: View {
 
     private var modelChip: some View {
         Button {
+            isPromptFocused = false
             isModelSheetPresented = true
         } label: {
             HStack(spacing: 9) {
@@ -184,6 +202,14 @@ struct GenerateScreen: View {
                 .disabled(isGenerating)
                 .accessibilityLabel("Image prompt")
                 .accessibilityIdentifier("image-prompt-field")
+                .background {
+                    GeometryReader { geometry in
+                        Color.clear.preference(
+                            key: PromptFieldFramePreferenceKey.self,
+                            value: geometry.frame(in: .named("generate-screen"))
+                        )
+                    }
+                }
         }
         .padding(16)
         .frame(maxWidth: .infinity, minHeight: 154, alignment: .topLeading)
@@ -222,6 +248,7 @@ struct GenerateScreen: View {
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .simultaneousGesture(TapGesture().onEnded { isPromptFocused = false })
 
             if referenceImageData != nil {
                 Button {
@@ -272,6 +299,7 @@ struct GenerateScreen: View {
 
     private func optionButton(title: String, value: String, option: OptionSheet) -> some View {
         Button {
+            isPromptFocused = false
             activeOption = option
         } label: {
             settingTile(title: title, value: value, showsChevron: true)

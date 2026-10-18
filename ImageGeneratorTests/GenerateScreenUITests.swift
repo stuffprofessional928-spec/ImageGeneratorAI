@@ -17,6 +17,25 @@ final class GenerateScreenUITests: XCTestCase {
         XCTAssertGreaterThan(promptCard.frame.height, collapsedHeight)
     }
 
+    func testTappingOutsidePromptDismissesKeyboard() {
+        let app = XCUIApplication()
+        app.launch()
+
+        let promptField = app.descendants(matching: .any)["image-prompt-field"]
+        XCTAssertTrue(promptField.waitForExistence(timeout: 5))
+        promptField.tap()
+        promptField.typeText("A new prompt")
+
+        let promptCard = app.otherElements["prompt-card"]
+        XCTAssertTrue(promptCard.waitForExistence(timeout: 5))
+        promptCard.coordinate(withNormalizedOffset: CGVector(dx: 0.1, dy: 0.1)).tap()
+
+        let keyboard = app.keyboards.firstMatch
+        let keyboardDismissed = NSPredicate(format: "exists == false")
+        expectation(for: keyboardDismissed, evaluatedWith: keyboard)
+        waitForExpectations(timeout: 5)
+    }
+
     func testDimensionsCanBeSelected() {
         let app = XCUIApplication()
         app.launch()
